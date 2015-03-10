@@ -1,0 +1,71 @@
+<html>
+<head> 
+	<script src="myojs-0.8.7.js"></script>
+        <script>
+        var hub, currentPose, title;
+        hub = new Myo.Hub();
+
+        hub.on('connect', function() {
+            console.log("Connected");
+        });
+
+        hub.on('pose', function(pose) {
+            currentPose = pose;
+            if(currentPose.type == currentPose.POSE_FIST) {
+            	console.log("Swag swag fist");
+                var xmlHttp = null;
+
+                xmlHttp = new XMLHttpRequest();
+                xmlHttp.open( "GET", "/back", false );
+                xmlHttp.send( null );
+                return xmlHttp.responseText;
+            }
+        });
+
+        hub.on('pose', function(pose) {
+            currentPose = pose;
+            if(currentPose.type == currentPose.POSE_FINGERS_SPREAD) {
+                console.log("Swag swag spread");
+                var xmlHttp = null;
+
+                xmlHttp = new XMLHttpRequest();
+                xmlHttp.open( "GET", "/back", false );
+                xmlHttp.send( null );
+                return xmlHttp.responseText;
+            }
+        });
+
+        hub.on('pose', function(pose) {
+            currentPose = pose;
+            if(currentPose.type == currentPose.POSE_WAVE_IN) {
+                console.log("Swag swag in");
+                var xmlHttp = null;
+
+                xmlHttp = new XMLHttpRequest();
+                xmlHttp.open( "GET", "/back", false );
+                xmlHttp.send( null );
+                return xmlHttp.responseText;
+            }
+        });
+
+        hub.on('pose', function(pose) {
+            currentPose = pose;
+            if(currentPose.type == currentPose.POSE_WAVE_OUT) {
+                console.log("Swag swag out");
+                var xmlHttp = null;
+
+                xmlHttp = new XMLHttpRequest();
+                xmlHttp.open( "GET", "/back", false );
+                xmlHttp.send( null );
+                return xmlHttp.responseText;
+            }
+        });
+    </script>
+</head>
+<body>
+<button id="forward" type="button">Forward</button>
+<button id="back" type="button">Back</button>
+<button id="spin" type="button">Spin</button>
+</body>
+</html>
+</html>
