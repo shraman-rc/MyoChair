@@ -16,9 +16,7 @@ var forwardBtn = document.getElementById("forward");
 var backBtn = document.getElementById("back");
 var spinBtn = document.getElementById("spin");
 
-forwardBtn.addEventListener("click", function() {forward();});
-backBtn.addEventListener("click", function() {back();});
-spinBtn.addEventListener("click", function() {spin();});
+// Once Edison boots successfully, acquire control of servos
 
 board.on("ready",function(){
 
@@ -33,6 +31,12 @@ board.on("ready",function(){
   });
 
 });
+
+// Event handlers to control servo on wheelchair manually
+
+forwardBtn.addEventListener("click", function() {forward();});
+backBtn.addEventListener("click", function() {back();});
+spinBtn.addEventListener("click", function() {spin();});
 
 var switchDirections = function() {
   if(direction){ leftservo.cw(1); rightservo.ccw(1);}
@@ -54,6 +58,8 @@ var spin = function() {
   leftservo.cw(1);
   rightservo.cw(1);
 }
+
+// Basic rerouting for armband GET requests
 
 app.get('/', function (req, res) {
   res.sendfile("./example.html");
@@ -79,8 +85,12 @@ app.get('/s', function (req, res) {
   spin();
 });
 
+// Start the server
+
 var server = app.listen(8080, function() {
   console.log("Example app listening...");
 });
+
+// Serve static files with Express
 
 app.use("/", express.static(__dirname));
